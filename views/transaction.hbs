@@ -1,0 +1,10 @@
+<p>Welcome {{ uname }}</p>
+<a href="/logout" >Logout</a>
+<p>Transactions Here</p>
+<p>Total balance:  {{ money }}</p>
+
+<form method="post" action="/transact">
+<input type="text" name="money" />
+<input type="submit" name="withdraw" value="Withdraw" />
+<input type="submit" name="deposit" value="Deposit" />
+</form>
