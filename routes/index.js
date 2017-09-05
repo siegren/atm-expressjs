@@ -49,13 +49,26 @@ router.post('/transact', function(req, res, next) {
 	if(req.body.withdraw == "Withdraw"){
 		res.cookie('money', parseInt(req.cookies['money']) - parseInt(req.body.money));	
 		res.send('Thank you for banking with us! You withdrew ' + req.body.money + '<br /><a href="/transaction">Go Back</a>');
+			for(var x = 0; x<=db.length - 1; x++){
+					if((req.cookies['uname'] == db[x]['uname']) && (req.cookies['pword'] == db[x]['pword'])){
+						db[x]['money'] = parseInt(req.cookies['money']) - parseInt(req.body.money);
+						break;
+					}
+				}
 
+	
 	}
 
 	if(req.body.deposit == "Deposit"){
 		res.cookie('money', parseInt(req.cookies['money']) + parseInt(req.body.money));	
 		res.send('Thank you for banking with us! You deposited ' + req.body.money + '<br /><a href="/transaction">Go Back</a>');
 
+			for(var x = 0; x<=db.length - 1; x++){
+				if((req.cookies['uname'] == db[x]['uname']) && (req.cookies['pword'] == db[x]['pword'])){
+					db[x]['money'] = parseInt(req.cookies['money']) - parseInt(req.body.money);
+					break;
+				}
+			}
 	}
 
 	// res.redirect('/transaction');
@@ -71,6 +84,10 @@ router.get('/transaction', function(req, res, next) {
 		 res.redirect('/');
 	}
   
+});
+
+router.get('/users', function(req, res, next) {
+  res.send(JSON.stringify(db));
 });
 
 module.exports = router;

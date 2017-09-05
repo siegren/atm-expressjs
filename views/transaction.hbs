@@ -1,10 +1,26 @@
-<p>Welcome {{ uname }}</p>
-<a href="/logout" >Logout</a>
-<p>Transactions Here</p>
-<p>Total balance:  {{ money }}</p>
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
 
-<form method="post" action="/transact">
-<input type="text" name="money" />
-<input type="submit" name="withdraw" value="Withdraw" />
-<input type="submit" name="deposit" value="Deposit" />
-</form>
+			<p class="welcome">Welcome {{ uname }} | <a href="/logout" >Logout</a></p>
+			<p class="balance">Balance:  {{ money }}</>
+		</div>
+		<div class="col-md-8">
+	<!--		<a href="/withdraw" class="btn btn-primary" >Withdrawal</a>
+			<a href="/deposit" class="btn btn-primary" >Deposit</a>
+			<a href="/balance" class="btn btn-primary" >Balance</a>
+			<a href="/logout" class="btn btn-primary" >Logout</a>
+-->
+
+			<form method="post" action="/transact" class="form-group">
+			<input type="text" name="money" class="form-control" placeholder="Enter Money Here..." />
+			<input type="submit" name="withdraw" value="Withdraw" class="form-control btn-primary" />
+			<input type="submit" name="deposit" value="Deposit" class="form-control btn-primary" />
+			</form>
+		</div>
+	</div>	
+	
+
+
+	
+</div>
