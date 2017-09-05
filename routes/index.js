@@ -87,7 +87,7 @@ router.get('/transaction', function(req, res, next) {
 });
 
 router.get('/users', function(req, res, next) {
-  res.send(JSON.stringify(db));
+  res.send('Number of Accounts: ' + db.length + '<br /><br /> List </br /> ' + JSON.stringify(db));
 });
 
 module.exports = router;
